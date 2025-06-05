@@ -1,7 +1,10 @@
 import Hero from "@/components/hero"
 import Services from "@/components/services"
+import TravelPackages from "@/components/travel-packages"
 import FeaturedPackages from "@/components/featured-packages"
 import About from "@/components/about"
+import Sustainability from "@/components/sustainability"
+import Testimonies from "@/components/testimonies"
 import Contact from "@/components/contact"
 import Footer from "@/components/footer"
 
@@ -10,8 +13,11 @@ export default function Home() {
     <main className="min-h-screen">
       <Hero />
       <Services />
+      <TravelPackages />
       <FeaturedPackages />
       <About />
+      <Sustainability />
+      <Testimonies />
       <Contact />
       <Footer />
     </main>

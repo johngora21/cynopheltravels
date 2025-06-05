@@ -11,44 +11,44 @@ export default function Services() {
   const services = [
     {
       icon: Plane,
-      title: "International Flights",
-      description: "Premium flight booking services with competitive rates and flexible options worldwide.",
-      features: ["24/7 Support", "Best Price Guarantee", "Flexible Booking"],
+      title: "Flight Bookings",
+      description: "Competitive rates on domestic and international flights with flexible booking options.",
+      features: ["Domestic Flights", "International Routes", "Competitive Rates"],
       color: "from-blue-500 to-blue-700",
     },
     {
       icon: Hotel,
-      title: "Luxury Accommodations",
-      description: "Handpicked hotels and lodges offering exceptional comfort and authentic experiences.",
-      features: ["5-Star Properties", "Local Partnerships", "Special Rates"],
-      color: "from-blue-600 to-blue-800",
-    },
-    {
-      icon: Users,
-      title: "Group Adventures",
-      description: "Customized group travel experiences for families, friends, and corporate teams.",
-      features: ["Custom Itineraries", "Group Discounts", "Dedicated Guide"],
-      color: "from-blue-700 to-blue-900",
-    },
-    {
-      icon: Heart,
-      title: "Romantic Getaways",
-      description: "Intimate safari experiences and luxury retreats perfect for couples and honeymooners.",
-      features: ["Private Safaris", "Romantic Dinners", "Spa Treatments"],
-      color: "from-blue-500 to-blue-700",
-    },
-    {
-      icon: Briefcase,
-      title: "Business Travel",
-      description: "Professional travel management for corporate clients with seamless logistics.",
-      features: ["Corporate Rates", "Travel Management", "Expense Reporting"],
+      title: "Accommodation Arrangements",
+      description: "Professional booking services for hotels, resorts, and vacation rentals across Tanzania.",
+      features: ["Hotels & Resorts", "Vacation Rentals", "Best Rate Guarantee"],
       color: "from-blue-600 to-blue-800",
     },
     {
       icon: MapPin,
-      title: "Private Tours",
-      description: "Exclusive private safaris and cultural experiences with personal guides.",
-      features: ["Personal Guide", "Flexible Schedule", "VIP Treatment"],
+      title: "Transportation Services",
+      description: "Comprehensive transport solutions including car rentals, transfers, and private charters.",
+      features: ["Car Rentals", "Airport Transfers", "Private Charters"],
+      color: "from-blue-700 to-blue-900",
+    },
+    {
+      icon: Users,
+      title: "Visa & Passport Assistance",
+      description: "Expert guidance and support for visa applications and passport requirements.",
+      features: ["Visa Processing", "Document Guidance", "Application Support"],
+      color: "from-blue-500 to-blue-700",
+    },
+    {
+      icon: Heart,
+      title: "Travel Insurance",
+      description: "Comprehensive travel insurance coverage and 24/7 assistance for peace of mind.",
+      features: ["Medical Coverage", "Trip Protection", "24/7 Assistance"],
+      color: "from-blue-600 to-blue-800",
+    },
+    {
+      icon: Briefcase,
+      title: "Boat & Air Transport",
+      description: "Specialized logistics for boat transport and air transport coordination.",
+      features: ["Boat Transport", "Air Logistics", "Custom Solutions"],
       color: "from-blue-700 to-blue-900",
     },
   ]
@@ -57,10 +57,10 @@ export default function Services() {
     <section id="services" className="py-16 bg-gradient-to-br from-slate-50 to-white">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold font-poppins text-slate-800 mb-4">Our Premium Services</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold font-poppins text-slate-800 mb-4">Our Travel Services</h2>
           <p className="text-base text-slate-600 max-w-3xl mx-auto leading-relaxed font-poppins">
-            From international flights to luxury safaris, we provide comprehensive travel solutions tailored to create
-            unforgettable experiences in Tanzania and beyond.
+            From flight bookings to travel insurance, we provide comprehensive travel services to ensure your journey is
+            seamless and worry-free.
           </p>
         </div>
 

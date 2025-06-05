@@ -48,16 +48,24 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-6">
-            {["Home", "Services", "Packages", "About", "Contact"].map((item) => (
+          <div className="hidden lg:flex items-center space-x-5">
+            {[
+              { name: "Home", href: "#home" },
+              { name: "Services", href: "#services" },
+              { name: "Packages", href: "#travel-types" },
+              { name: "Sustainability", href: "#sustainability" },
+              { name: "Testimonies", href: "#testimonies" },
+              { name: "About", href: "#about" },
+              { name: "Contact", href: "#contact" },
+            ].map((item) => (
               <Link
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.name}
+                href={item.href}
                 className={`font-poppins text-sm font-medium transition-all duration-300 hover:scale-105 ${
                   isScrolled ? "text-slate-700 hover:text-blue-700" : "text-white hover:text-blue-200"
                 }`}
               >
-                {item}
+                {item.name}
               </Link>
             ))}
             <Button className="bg-blue-700 hover:bg-blue-800 text-white px-5 py-2 rounded-full text-sm font-poppins transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
@@ -69,7 +77,7 @@ export default function Navbar() {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="lg:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? (
@@ -82,21 +90,29 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         <div
-          className={`md:hidden transition-all duration-500 overflow-hidden ${
+          className={`lg:hidden transition-all duration-500 overflow-hidden ${
             isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
           <div className="pt-4 pb-2 space-y-3">
-            {["Home", "Services", "Packages", "About", "Contact"].map((item) => (
+            {[
+              { name: "Home", href: "#home" },
+              { name: "Services", href: "#services" },
+              { name: "Packages", href: "#travel-types" },
+              { name: "Sustainability", href: "#sustainability" },
+              { name: "Testimonies", href: "#testimonies" },
+              { name: "About", href: "#about" },
+              { name: "Contact", href: "#contact" },
+            ].map((item) => (
               <Link
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.name}
+                href={item.href}
                 className={`block py-2 font-poppins text-sm font-medium transition-colors duration-300 ${
                   isScrolled ? "text-slate-700" : "text-white"
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                {item}
+                {item.name}
               </Link>
             ))}
             <Button className="w-full mt-4 bg-blue-700 hover:bg-blue-800 text-white rounded-full text-sm font-poppins">
