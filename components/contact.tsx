@@ -51,11 +51,11 @@ export default function Contact() {
   ]
 
   return (
-    <section id="contact" className="py-16 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900">
+    <section id="contact" className="py-16 bg-white">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold font-poppins text-white mb-4">Start Your Adventure Today</h2>
-          <p className="text-base text-blue-200 max-w-3xl mx-auto leading-relaxed font-poppins">
+          <h2 className="text-2xl sm:text-3xl font-bold font-poppins text-slate-800 mb-4">Start Your Adventure Today</h2>
+          <p className="text-base text-slate-600 max-w-3xl mx-auto leading-relaxed font-poppins">
             Ready to explore Tanzania? Get in touch with our travel experts to plan your perfect safari adventure. We're
             here to make your dreams come true.
           </p>
@@ -70,17 +70,17 @@ export default function Contact() {
                 return (
                   <Card
                     key={index}
-                    className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300 rounded-xl"
+                    className="bg-slate-50 hover:bg-slate-100 transition-all duration-300 rounded-xl border border-slate-200"
                   >
                     <CardContent className="p-5">
                       <div
-                        className={`w-10 h-10 rounded-full bg-gradient-to-br from-white/20 to-white/10 flex items-center justify-center mb-3`}
+                        className={`w-10 h-10 rounded-full bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center mb-3`}
                       >
-                        <IconComponent className={`w-5 h-5 text-white`} />
+                        <IconComponent className={`w-5 h-5 ${info.color}`} />
                       </div>
-                      <h4 className="font-semibold text-white mb-2 text-sm font-poppins">{info.title}</h4>
+                      <h4 className="font-semibold text-slate-800 mb-2 text-sm font-poppins">{info.title}</h4>
                       {info.details.map((detail, idx) => (
-                        <p key={idx} className="text-blue-100 text-xs font-poppins">
+                        <p key={idx} className="text-slate-600 text-xs font-poppins">
                           {detail}
                         </p>
                       ))}
@@ -91,7 +91,7 @@ export default function Contact() {
             </div>
 
             {/* Map or Image */}
-            <Card className="overflow-hidden rounded-xl border-0">
+            <Card className="overflow-hidden rounded-xl border border-slate-200">
               <div
                 className="h-64 bg-cover bg-center"
                 style={{ backgroundImage: `url('/placeholder.svg?height=400&width=600')` }}
@@ -100,7 +100,7 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <Card className="bg-white border-0 shadow-xl rounded-xl">
+          <Card className="bg-white border border-slate-200 shadow-lg rounded-xl">
             <CardContent className="p-6">
               <h3 className="text-xl font-bold text-slate-800 mb-5 font-poppins">Send Us a Message</h3>
 

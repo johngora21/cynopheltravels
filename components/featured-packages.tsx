@@ -5,9 +5,21 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Calendar, Users, MapPin, Star, Clock, ArrowRight, Heart, ChevronLeft, ChevronRight } from "lucide-react"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 export default function FeaturedPackages() {
   const [likedPackages, setLikedPackages] = useState<number[]>([])
+  const [selectedPackage, setSelectedPackage] = useState<number | null>(null)
   const sliderRef = useRef<HTMLDivElement>(null)
 
   const packages = [
@@ -88,6 +100,165 @@ export default function FeaturedPackages() {
       const { scrollLeft, clientWidth } = sliderRef.current
       const scrollTo = direction === "left" ? scrollLeft - clientWidth : scrollLeft + clientWidth
       sliderRef.current.scrollTo({ left: scrollTo, behavior: "smooth" })
+    }
+  }
+
+  const handleBookNow = (packageId: number) => {
+    setSelectedPackage(packageId)
+  }
+
+  const handleCloseDialog = () => {
+    setSelectedPackage(null)
+  }
+
+  const getPackageSpecificFields = (packageId: number) => {
+    switch (packageId) {
+      case 0: // Serengeti Safari Spectacular
+        return (
+          <>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="safariType" className="text-right">
+                Safari Type
+              </Label>
+              <Select>
+                <SelectTrigger className="col-span-3">
+                  <SelectValue placeholder="Select safari type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="morning">Morning Safari</SelectItem>
+                  <SelectItem value="afternoon">Afternoon Safari</SelectItem>
+                  <SelectItem value="fullDay">Full Day Safari</SelectItem>
+                  <SelectItem value="multiDay">Multi-Day Safari</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="wildlife" className="text-right">
+                Wildlife Focus
+              </Label>
+              <Select>
+                <SelectTrigger className="col-span-3">
+                  <SelectValue placeholder="Select wildlife focus" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="bigFive">Big Five</SelectItem>
+                  <SelectItem value="migration">Great Migration</SelectItem>
+                  <SelectItem value="birds">Bird Watching</SelectItem>
+                  <SelectItem value="all">All Wildlife</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </>
+        )
+      case 1: // Kilimanjaro Summit Adventure
+        return (
+          <>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="route" className="text-right">
+                Climbing Route
+              </Label>
+              <Select>
+                <SelectTrigger className="col-span-3">
+                  <SelectValue placeholder="Select climbing route" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="machame">Machame Route</SelectItem>
+                  <SelectItem value="marangu">Marangu Route</SelectItem>
+                  <SelectItem value="lemosho">Lemosho Route</SelectItem>
+                  <SelectItem value="rongai">Rongai Route</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="fitness" className="text-right">
+                Fitness Level
+              </Label>
+              <Select>
+                <SelectTrigger className="col-span-3">
+                  <SelectValue placeholder="Select fitness level" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="beginner">Beginner</SelectItem>
+                  <SelectItem value="intermediate">Intermediate</SelectItem>
+                  <SelectItem value="advanced">Advanced</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </>
+        )
+      case 2: // Zanzibar Beach Paradise
+        return (
+          <>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="beachLocation" className="text-right">
+                Beach Location
+              </Label>
+              <Select>
+                <SelectTrigger className="col-span-3">
+                  <SelectValue placeholder="Select beach location" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="north">North Coast</SelectItem>
+                  <SelectItem value="east">East Coast</SelectItem>
+                  <SelectItem value="south">South Coast</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="activities" className="text-right">
+                Activities
+              </Label>
+              <Select>
+                <SelectTrigger className="col-span-3">
+                  <SelectValue placeholder="Select activities" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="snorkeling">Snorkeling</SelectItem>
+                  <SelectItem value="diving">Diving</SelectItem>
+                  <SelectItem value="spiceTour">Spice Tour</SelectItem>
+                  <SelectItem value="all">All Activities</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </>
+        )
+      case 3: // Ngorongoro Crater Explorer
+        return (
+          <>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="craterType" className="text-right">
+                Crater Experience
+              </Label>
+              <Select>
+                <SelectTrigger className="col-span-3">
+                  <SelectValue placeholder="Select crater experience" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="fullDay">Full Day Crater Tour</SelectItem>
+                  <SelectItem value="halfDay">Half Day Crater Tour</SelectItem>
+                  <SelectItem value="photography">Photography Tour</SelectItem>
+                  <SelectItem value="wildlife">Wildlife Focus Tour</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="maasaiVillage" className="text-right">
+                Maasai Village Visit
+              </Label>
+              <Select>
+                <SelectTrigger className="col-span-3">
+                  <SelectValue placeholder="Select village visit option" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="yes">Include Village Visit</SelectItem>
+                  <SelectItem value="no">Exclude Village Visit</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </>
+        )
+      default:
+        return null
     }
   }
 
@@ -211,7 +382,10 @@ export default function FeaturedPackages() {
                   </div>
 
                   <div className="flex space-x-2">
-                    <Button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium font-poppins py-2 rounded-full transform hover:scale-105 transition-all duration-300">
+                    <Button
+                      onClick={() => handleBookNow(pkg.id - 1)}
+                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium font-poppins py-2 rounded-full transform hover:scale-105 transition-all duration-300"
+                    >
                       Book Now
                       <ArrowRight className="ml-1 w-3 h-3" />
                     </Button>
@@ -252,6 +426,151 @@ export default function FeaturedPackages() {
           </Button>
         </div>
       </div>
+
+      <Dialog open={selectedPackage !== null} onOpenChange={handleCloseDialog}>
+        <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-xl font-semibold text-slate-800">
+              Book {selectedPackage !== null ? packages[selectedPackage].title : ''}
+            </DialogTitle>
+            <DialogDescription className="text-slate-600">
+              Fill out the form below to book this safari package. We'll get back to you shortly.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            {/* Common fields for all packages */}
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="name" className="text-right">
+                Name
+              </Label>
+              <Input
+                id="name"
+                placeholder="Your name"
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="email" className="text-right">
+                Email
+              </Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="Your email"
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="phone" className="text-right">
+                Phone
+              </Label>
+              <Input
+                id="phone"
+                type="tel"
+                placeholder="Your phone number"
+                className="col-span-3"
+              />
+            </div>
+
+            {/* Package-specific fields */}
+            {selectedPackage !== null && getPackageSpecificFields(selectedPackage)}
+
+            {/* Common fields for all packages */}
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="startDate" className="text-right">
+                Start Date
+              </Label>
+              <Input
+                id="startDate"
+                type="date"
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="endDate" className="text-right">
+                End Date
+              </Label>
+              <Input
+                id="endDate"
+                type="date"
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="guests" className="text-right">
+                Number of Guests
+              </Label>
+              <Select>
+                <SelectTrigger className="col-span-3">
+                  <SelectValue placeholder="Select number of guests" />
+                </SelectTrigger>
+                <SelectContent>
+                  {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+                    <SelectItem key={num} value={num.toString()}>
+                      {num} {num === 1 ? 'Guest' : 'Guests'}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="accommodation" className="text-right">
+                Accommodation Type
+              </Label>
+              <Select>
+                <SelectTrigger className="col-span-3">
+                  <SelectValue placeholder="Select accommodation type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="tented">Luxury Tented Camp</SelectItem>
+                  <SelectItem value="lodge">Safari Lodge</SelectItem>
+                  <SelectItem value="camp">Camping</SelectItem>
+                  <SelectItem value="luxury">Luxury Camp</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="transport" className="text-right">
+                Transport Type
+              </Label>
+              <Select>
+                <SelectTrigger className="col-span-3">
+                  <SelectValue placeholder="Select transport type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="4x4">4x4 Safari Vehicle</SelectItem>
+                  <SelectItem value="private">Private Vehicle</SelectItem>
+                  <SelectItem value="shared">Shared Vehicle</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="message" className="text-right">
+                Special Requirements
+              </Label>
+              <Textarea
+                id="message"
+                placeholder="Any special requirements or preferences"
+                className="col-span-3"
+              />
+            </div>
+          </div>
+          <div className="flex justify-end gap-3">
+            <Button
+              variant="outline"
+              onClick={handleCloseDialog}
+              className="text-slate-600"
+            >
+              Cancel
+            </Button>
+            <Button
+              className="bg-blue-600 hover:bg-blue-700 text-white"
+            >
+              Submit Booking
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   )
 }

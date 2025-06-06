@@ -6,10 +6,22 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react"
 import { User, Users, Briefcase, School, Crown, Mountain, Landmark, Leaf } from "lucide-react"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 export default function TravelPackages() {
   const sliderRef = useRef<HTMLDivElement>(null)
   const [activePackage, setActivePackage] = useState(0)
+  const [selectedPackage, setSelectedPackage] = useState<number | null>(null)
 
   const packages = [
     {
@@ -110,6 +122,14 @@ export default function TravelPackages() {
     }
   }
 
+  const handleBookNow = (packageId: number) => {
+    setSelectedPackage(packageId)
+  }
+
+  const handleCloseDialog = () => {
+    setSelectedPackage(null)
+  }
+
   return (
     <section id="travel-types" className="py-16 bg-gradient-to-br from-blue-50 to-white">
       <div className="container mx-auto px-4 sm:px-6">
@@ -189,11 +209,6 @@ export default function TravelPackages() {
                         </div>
                       ))}
                     </div>
-
-                    <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium font-poppins py-2 rounded-full transform hover:scale-105 transition-all duration-300">
-                      Explore Package
-                      <ArrowRight className="ml-1 w-3 h-3" />
-                    </Button>
                   </CardContent>
                 </Card>
               )
@@ -215,6 +230,139 @@ export default function TravelPackages() {
           </div>
         </div>
       </div>
+
+      <Dialog open={selectedPackage !== null} onOpenChange={handleCloseDialog}>
+        <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-xl font-semibold text-slate-800">
+              Book {selectedPackage !== null ? packages[selectedPackage].title : ''} Package
+            </DialogTitle>
+            <DialogDescription className="text-slate-600">
+              Fill out the form below to book this travel package. We'll get back to you shortly.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            {/* Common fields for all packages */}
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="name" className="text-right">
+                Name
+              </Label>
+              <Input
+                id="name"
+                placeholder="Your name"
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="email" className="text-right">
+                Email
+              </Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="Your email"
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="phone" className="text-right">
+                Phone
+              </Label>
+              <Input
+                id="phone"
+                type="tel"
+                placeholder="Your phone number"
+                className="col-span-3"
+              />
+            </div>
+
+            {/* Package-specific fields */}
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="travelDate" className="text-right">
+                Preferred Travel Date
+              </Label>
+              <Input
+                id="travelDate"
+                type="date"
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="duration" className="text-right">
+                Duration
+              </Label>
+              <Select>
+                <SelectTrigger className="col-span-3">
+                  <SelectValue placeholder="Select duration" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="3-5">3-5 Days</SelectItem>
+                  <SelectItem value="6-8">6-8 Days</SelectItem>
+                  <SelectItem value="9-12">9-12 Days</SelectItem>
+                  <SelectItem value="13+">13+ Days</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="groupSize" className="text-right">
+                Group Size
+              </Label>
+              <Select>
+                <SelectTrigger className="col-span-3">
+                  <SelectValue placeholder="Select group size" />
+                </SelectTrigger>
+                <SelectContent>
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((num) => (
+                    <SelectItem key={num} value={num.toString()}>
+                      {num} {num === 1 ? 'Person' : 'People'}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="accommodation" className="text-right">
+                Accommodation Type
+              </Label>
+              <Select>
+                <SelectTrigger className="col-span-3">
+                  <SelectValue placeholder="Select accommodation type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="standard">Standard</SelectItem>
+                  <SelectItem value="comfort">Comfort</SelectItem>
+                  <SelectItem value="luxury">Luxury</SelectItem>
+                  <SelectItem value="premium">Premium</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="message" className="text-right">
+                Special Requirements
+              </Label>
+              <Textarea
+                id="message"
+                placeholder="Any special requirements or preferences"
+                className="col-span-3"
+              />
+            </div>
+          </div>
+          <div className="flex justify-end gap-3">
+            <Button
+              variant="outline"
+              onClick={handleCloseDialog}
+              className="text-slate-600"
+            >
+              Cancel
+            </Button>
+            <Button
+              className="bg-blue-600 hover:bg-blue-700 text-white"
+            >
+              Submit Booking
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   )
 }

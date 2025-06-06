@@ -50,10 +50,10 @@ export default function Navbar() {
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center space-x-5">
             {[
-              { name: "Home", href: "#home" },
+              { name: "Home", href: "/" },
               { name: "Services", href: "#services" },
               { name: "Packages", href: "#travel-types" },
-              { name: "Sustainability", href: "#sustainability" },
+              { name: "Sustainability", href: "/sustainability" },
               { name: "Testimonies", href: "#testimonies" },
               { name: "About", href: "#about" },
               { name: "Contact", href: "#contact" },
@@ -96,10 +96,10 @@ export default function Navbar() {
         >
           <div className="pt-4 pb-2 space-y-3">
             {[
-              { name: "Home", href: "#home" },
+              { name: "Home", href: "/" },
               { name: "Services", href: "#services" },
               { name: "Packages", href: "#travel-types" },
-              { name: "Sustainability", href: "#sustainability" },
+              { name: "Sustainability", href: "/sustainability" },
               { name: "Testimonies", href: "#testimonies" },
               { name: "About", href: "#about" },
               { name: "Contact", href: "#contact" },

@@ -36,7 +36,7 @@ export default function Hero() {
   }, [slides.length])
 
   return (
-    <section id="home" className="relative h-screen overflow-hidden">
+    <section id="home" className="relative min-h-[85vh] sm:min-h-[90vh] md:h-screen overflow-hidden">
       {/* Background Video/Image */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900">
         <div
